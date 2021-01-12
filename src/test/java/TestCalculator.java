@@ -18,4 +18,9 @@ public class TestCalculator {
 	{
 		assertEquals(3,Calculator.add("1,2"));
 	}
+	@Test
+	public void shouldReturnSumOfNumbersOfAnyCountDelimitedbyComma()
+	{
+		assertEquals(6,Calculator.add("1,2,3"));
+	}
 }
