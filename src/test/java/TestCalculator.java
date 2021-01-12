@@ -8,4 +8,14 @@ public class TestCalculator {
 	{
 		assertEquals(0,Calculator.add(""));
 	}
+	@Test
+	public void shouldReturnNumber()
+	{
+		assertEquals(1,Calculator.add("1"));
+	}
+	@Test
+	public void shouldReturnSumOf2NumbersDelimitedbyComma()
+	{
+		assertEquals(3,Calculator.add("1,2"));
+	}
 }

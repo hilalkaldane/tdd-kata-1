@@ -5,6 +5,19 @@ public class Calculator {
 		{
 			return 0;
 		}
-		return -1;
+		else
+		{
+			String[] numbersArray;
+			numbersArray= numbers.split(",");
+			if(numbersArray.length==1)
+			{
+				return Integer.parseInt(numbers);
+			}
+			else
+			{
+				return Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
+			}
+
+		}
 	}
 }
