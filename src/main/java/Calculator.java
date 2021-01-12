@@ -8,15 +8,7 @@ public class Calculator {
 		else {
 			String[] numbersArray;
 			numbersArray = numbers.split(",|\\n");
-			if (numbersArray.length == 1) {
-				return Integer.parseInt(numbers);
-			}
-			else if (numbersArray.length == 2) {
-				return Integer.parseInt(numbersArray[0]) + Integer.parseInt(numbersArray[1]);
-			}
-			else {
-				return Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
-			}
+			return Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
 		}
 	}
 }
