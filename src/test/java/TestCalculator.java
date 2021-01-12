@@ -87,9 +87,17 @@ public class TestCalculator {
 		}
 	}
 	@Test
-	public void checkForMultipleDelimeters() {
+	public void checkForMultipleDelimiters() {
 		try {
 			assertEquals(6,Calculator.add("//[*][%]\n1*2%3"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
+	}
+	public void checkForMultipleDelimitersWithAnySize() {
+		try {
+			assertEquals(6,Calculator.add("//[***]\n1***2***3"));
 		}
 		catch (Exception e) {
 			assertNull(e);
