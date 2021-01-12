@@ -1,32 +1,58 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestCalculator {
 	@Test
 	public void shouldReturnZeroIfEmpty()
 	{
-		assertEquals(0,Calculator.add(""));
+		try {
+			assertEquals(0,Calculator.add(""));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
 	}
 	@Test
 	public void shouldReturnNumber()
 	{
-		assertEquals(1,Calculator.add("1"));
+		try {
+			assertEquals(1,Calculator.add("1"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
 	}
 	@Test
-	public void shouldReturnSumOf2NumbersDelimitedbyComma()
+	public void shouldReturnSumOf2NumbersDelimitedByComma()
 	{
-		assertEquals(3,Calculator.add("1,2"));
+		try {
+			assertEquals(3,Calculator.add("1,2"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
 	}
 	@Test
-	public void shouldReturnSumOfNumbersOfAnyCountDelimitedbyComma()
+	public void shouldReturnSumOfNumbersOfAnyCountDelimitedByComma()
 	{
-		assertEquals(6,Calculator.add("1,2,3"));
+		try {
+			assertEquals(6,Calculator.add("1,2,3"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
 	}
 	@Test
-	public void shouldReturnSumDelimitedbyCommaAndNewLine()
+	public void shouldReturnSumDelimitedByCommaAndNewLine()
 	{
-		assertEquals(6,Calculator.add("1\n2,3"));
+		try {
+			assertEquals(6,Calculator.add("1\n2,3"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
 		/*		this will throw error
 				assertEquals(6,Calculator.add("1,\n2,3"));
 		 */
@@ -34,6 +60,21 @@ public class TestCalculator {
 	@Test
 	public void shouldReturnSumWithInputGivenWithSpecifiedDelimiter()
 	{
-		assertEquals(3,Calculator.add("//;\n1;2"));
+		try {
+			assertEquals(3,Calculator.add("//;\n1;2"));
+		}
+		catch (Exception e) {
+			assertNull(e);
+		}
+	}
+	@Test
+	public void shouldThrowExceptionForNegative()
+	{
+		try {
+			Calculator.add("//;\n-1;2");
+		}
+		catch (Exception e) {
+			assertEquals("negatives not allowed - -1",e.getMessage());
+		}
 	}
 }
