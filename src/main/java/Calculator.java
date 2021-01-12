@@ -7,7 +7,7 @@ public class Calculator {
 		}
 		else {
 			String[] numbersArray;
-			numbersArray = numbers.split(",");
+			numbersArray = numbers.split(",|\\n");
 			if (numbersArray.length == 1) {
 				return Integer.parseInt(numbers);
 			}

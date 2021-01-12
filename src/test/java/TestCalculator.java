@@ -23,4 +23,12 @@ public class TestCalculator {
 	{
 		assertEquals(6,Calculator.add("1,2,3"));
 	}
+	@Test
+	public void shouldReturnSumDelimitedbyCommaAndNewLine()
+	{
+		assertEquals(6,Calculator.add("1\n2,3"));
+		/*		this will throw error
+				assertEquals(6,Calculator.add("1,\n2,3"));
+		 */
+	}
 }
