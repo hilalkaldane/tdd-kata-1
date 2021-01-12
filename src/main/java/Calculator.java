@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
 	public static int add(String numbers) {
@@ -8,18 +10,26 @@ public class Calculator {
 		}
 		else
 		{
-			String[] numbersArray;
-			if (numbers.startsWith("//")) {
-				//splits numbers based on delimiter provided
-				numbersArray = numbers.split("\\n")[1].split(String.valueOf(numbers.charAt(2)));
-			}
-			else {
-				//splits input by delimiter as , and \n
-				numbersArray = numbers.split(",|\\n");
-			}
-			final int sum;
-			sum = Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
-			return sum;
+			String[] numbersArray = nonEmptyAddition(numbers);
+			return Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
+
 		}
+	}
+
+	private static String[] nonEmptyAddition(String numbers) {
+		String[] numbersArray;
+		if (numbers.startsWith("//")) {
+			//splits numbers based on delimiter provided
+			Pattern pattern = Pattern.compile("//(.*)\n(.*)");
+			Matcher matcher = pattern.matcher(numbers);
+			String delimiter=matcher.group(1);
+			numbers=matcher.group(2);
+			numbersArray = numbers.split(delimiter);
+		}
+		else {
+			//splits input by delimiter as , and \n
+			numbersArray = numbers.split(",|\\n");
+		}
+		return numbersArray;
 	}
 }
