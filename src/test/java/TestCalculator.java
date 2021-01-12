@@ -31,4 +31,9 @@ public class TestCalculator {
 				assertEquals(6,Calculator.add("1,\n2,3"));
 		 */
 	}
+	@Test
+	public void shouldReturnSumWithInputGivenWithSpecifiedDelimiter()
+	{
+		assertEquals(3,Calculator.add("//;\n1;2"));
+	}
 }

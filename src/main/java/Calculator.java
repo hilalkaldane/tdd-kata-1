@@ -2,13 +2,24 @@ import java.util.Arrays;
 
 public class Calculator {
 	public static int add(String numbers) {
-		if (numbers.isEmpty()) {
+		if(numbers.isEmpty())
+		{
 			return 0;
 		}
-		else {
+		else
+		{
 			String[] numbersArray;
-			numbersArray = numbers.split(",|\\n");
-			return Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
+			if (numbers.startsWith("//")) {
+				//splits numbers based on delimiter provided
+				numbersArray = numbers.split("\\n")[1].split(String.valueOf(numbers.charAt(2)));
+			}
+			else {
+				//splits input by delimiter as , and \n
+				numbersArray = numbers.split(",|\\n");
+			}
+			final int sum;
+			sum = Arrays.stream(numbersArray).mapToInt(Integer::valueOf).sum();
+			return sum;
 		}
 	}
 }
